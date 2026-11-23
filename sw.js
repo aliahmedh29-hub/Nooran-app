@@ -1,5 +1,5 @@
 // Offline support: keeps the app shell in the phone's cache after the first load.
-const CACHE = "nooran-app-v45";
+const CACHE = "nooran-app-v47";
 const SHELL = ["./", "./index.html", "./manifest.json", "./nooran-logo.jpg", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
